@@ -75,7 +75,7 @@ RUN chmod 644 /etc/supervisor/conf.d/supervisord.conf
 
 # Copy entrypoint script
 COPY docker/entrypoint.sh /entrypoint.sh
-RUN chmod 755 /entrypoint.sh
+RUN sed -i 's/\r$//' /entrypoint.sh && chmod 755 /entrypoint.sh
 
 # Make app files readable by non-root user
 RUN chmod -R a+rX /app
